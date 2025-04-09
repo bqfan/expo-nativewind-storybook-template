@@ -1,34 +1,43 @@
+import { fileURLToPath } from 'url';
 import path from 'path';
+import tailwindcss from 'tailwindcss';
+import autoprefixer from 'autoprefixer';
 
-/** @type{import("@storybook/react-webpack5").StorybookConfig} */
-module.exports = {
+/** @type {import("@storybook/react-webpack5").StorybookConfig} */
+const config = {
   stories: [
     "../components/**/*.stories.mdx",
     "../components/**/*.stories.@(js|jsx|ts|tsx)",
   ],
 
-  addons: ["@storybook/addon-links", "@storybook/addon-essentials", {
-    name: '@storybook/addon-react-native-web',
-    options: {
-      modulesToTranspile: [
-        'react-native-reanimated',
-        'nativewind',
-        'react-native-css-interop',
-      ],
-      babelPresets: ['nativewind/babel'],
-      babelPresetReactOptions: { jsxImportSource: 'nativewind' },
-      babelPlugins: [
-        'react-native-reanimated/plugin',
-        [
-          '@babel/plugin-transform-react-jsx',
-          {
-            runtime: 'automatic',
-            importSource: 'nativewind',
-          },
+  addons: [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    {
+      name: '@storybook/addon-react-native-web',
+      options: {
+        modulesToTranspile: [
+          'react-native-reanimated',
+          'nativewind',
+          'react-native-css-interop',
         ],
-      ],
+        babelPresets: ['nativewind/babel'],
+        babelPresetReactOptions: { jsxImportSource: 'nativewind' },
+        babelPlugins: [
+          'react-native-reanimated/plugin',
+          [
+            '@babel/plugin-transform-react-jsx',
+            {
+              runtime: 'automatic',
+              importSource: 'nativewind',
+            },
+          ],
+        ],
+      },
     },
-  }, '@storybook/addon-webpack5-compiler-babel', '@chromatic-com/storybook'],
+    '@storybook/addon-webpack5-compiler-babel',
+    '@chromatic-com/storybook',
+  ],
 
   framework: {
     name: "@storybook/react-webpack5",
@@ -38,6 +47,9 @@ module.exports = {
   docs: {},
 
   webpackFinal: async (config, { configType }) => {
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+
     config.module.rules.push({
       test: /\.css$/,
       use: [
@@ -45,20 +57,20 @@ module.exports = {
           loader: 'postcss-loader',
           options: {
             postcssOptions: {
-              plugins: [require('tailwindcss'), require('autoprefixer')]
-            }
-          }
-        }
+              plugins: [tailwindcss, autoprefixer],
+            },
+          },
+        },
       ],
-      include: path.resolve(__dirname, '../') // path to project root
-    })
+      include: path.resolve(__dirname, '../'),
+    });
 
-    return {
-      ...config
-    }
+    return config;
   },
 
   typescript: {
-    reactDocgen: 'react-docgen-typescript'
-  }
+    reactDocgen: 'react-docgen-typescript',
+  },
 };
+
+export default config;
