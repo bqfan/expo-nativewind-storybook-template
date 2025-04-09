@@ -1,5 +1,5 @@
 import React from "react";
-import { Pressable, Text, StyleSheet } from "react-native";
+import { Button, ButtonText } from "@/components/ui/button";
 
 interface MyButtonProps {
   onPress: () => void;
@@ -8,11 +8,13 @@ interface MyButtonProps {
 
 export const MyButton = ({ onPress, text }: MyButtonProps) => {
   return (
-    <Pressable
-      className="self-center px-8 py-2 bg-sky-700 rounded-lg web:hover:bg-sky-600 native:active:bg-sky-600"
+    <Button
+      className="px-8 py-2 bg-teal-500 self-start rounded-lg"
       onPress={onPress}
     >
-      <Text className="text-white text-lg font-bold">{text}</Text>
-    </Pressable>
+      <ButtonText className="text-white text-base font-bold">
+        {text}
+      </ButtonText>
+    </Button>
   );
 };
