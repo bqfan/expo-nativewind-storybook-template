@@ -1,0 +1,88 @@
+🔎 checking possible migrations..
+
+🔎 found a 'upgradeStorybookRelatedDependencies' migration:
+╭ Automigration detected ────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                            │
+│   You're upgrading to the latest version of Storybook. We recommend upgrading the following packages:      │
+│   - @chromatic-com/storybook: 1.9.0 => 3.2.6                                                               │
+│   - @storybook/addon-ondevice-actions: 8.3.10 => 8.6.2                                                     │
+│   - @storybook/addon-ondevice-backgrounds: 8.3.10 => 8.6.2                                                 │
+│   - @storybook/addon-ondevice-controls: 8.3.10 => 8.6.2                                                    │
+│   - @storybook/addon-ondevice-notes: 8.3.10 => 8.6.2                                                       │
+│   - @storybook/addon-react-native-web: 0.0.26 => 0.0.29                                                    │
+│   - @storybook/addon-webpack5-compiler-babel: 3.0.3 => 3.0.6                                               │
+│   - @storybook/react-native: 8.3.10 => 8.6.2                                                               │
+│                                                                                                            │
+│   After upgrading, we will run the dedupe command, which could possibly have effects on dependencies       │
+│   that are not Storybook related.                                                                          │
+│   see: https://docs.npmjs.com/cli/commands/npm-dedupe                                                      │
+│                                                                                                            │
+│   Do you want to proceed (upgrade the detected packages)?                                                  │
+│                                                                                                            │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'upgradeStorybookRelatedDependencies' migration on your project? › (y/N)✔ Do you want to run the 'upgradeStorybookRelatedDependencies' migration on your project? … yes
+Installing dependencies...
+
+An error occurred while installing dependencies.
+❌ error when running upgradeStorybookRelatedDependencies migration
+HandledError: Error: Command failed with exit code 1: npm install
+    at er.installDependencies (/opt/homebrew/lib/node_modules/@storybook/cli/node_modules/@storybook/core/dist/common/index.cjs:18993:75)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.run (/opt/homebrew/lib/node_modules/@storybook/cli/dist/bin/index.cjs:512:543)
+    ... 2 lines matching cause stack trace ...
+    at async doUpgrade (/opt/homebrew/lib/node_modules/@storybook/cli/dist/bin/index.cjs:664:2133)
+    at async withTelemetry (/opt/homebrew/lib/node_modules/@storybook/cli/node_modules/@storybook/core/dist/core-server/index.cjs:35778:12)
+    at async upgrade (/opt/homebrew/lib/node_modules/@storybook/cli/dist/bin/index.cjs:664:2640) {
+  handled: true,
+  cause: Error: Command failed with exit code 1: npm install
+      at makeError (/opt/homebrew/lib/node_modules/@storybook/cli/node_modules/@storybook/core/dist/common/index.cjs:18187:67)
+      at handlePromise (/opt/homebrew/lib/node_modules/@storybook/cli/node_modules/@storybook/core/dist/common/index.cjs:18805:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async er.executeCommand (/opt/homebrew/lib/node_modules/@storybook/cli/node_modules/@storybook/core/dist/common/index.cjs:19254:15)
+      at async er.runInstall (/opt/homebrew/lib/node_modules/@storybook/cli/node_modules/@storybook/core/dist/common/index.cjs:19595:5)
+      at async er.installDependencies (/opt/homebrew/lib/node_modules/@storybook/cli/node_modules/@storybook/core/dist/common/index.cjs:18991:7)
+      at async Object.run (/opt/homebrew/lib/node_modules/@storybook/cli/dist/bin/index.cjs:512:543)
+      at async runFixes (/opt/homebrew/lib/node_modules/@storybook/cli/dist/bin/index.cjs:597:1801)
+      at async automigrate (/opt/homebrew/lib/node_modules/@storybook/cli/dist/bin/index.cjs:595:1807)
+      at async doUpgrade (/opt/homebrew/lib/node_modules/@storybook/cli/dist/bin/index.cjs:664:2133) {
+    shortMessage: 'Command failed with exit code 1: npm install',
+    command: 'npm install',
+    escapedCommand: 'npm install',
+    exitCode: 1,
+    signal: undefined,
+    signalDescription: undefined,
+    stdout: undefined,
+    stderr: undefined,
+    cwd: '/Users/q/Code/react-native/expo-nativewind-storybook-template',
+    failed: true,
+    timedOut: false,
+    isCanceled: false,
+    killed: false
+  }
+}
+
+WARN An issue occurred while trying to find dependencies metadata using npm.
+
+╭ Migration check ran with failures ─────────────────────────────────────────────────────────────────────────╮
+│                                                                                                            │
+│   Failed migrations:                                                                                       │
+│                                                                                                            │
+│   upgradeStorybookRelatedDependencies:                                                                     │
+│   Error: Command failed with exit code 1: npm install                                                      │
+│                                                                                                            │
+│   You can find the full logs in                                                                            │
+│   /Users/q/Code/react-native/expo-nativewind-storybook-template/migration-storybook.log                    │
+│                                                                                                            │
+│   ─────────────────────────────────────────────────                                                        │
+│                                                                                                            │
+│   If you'd like to run the migrations again, you can do so by running 'npx storybook automigrate'          │
+│                                                                                                            │
+│   The automigrations try to migrate common patterns in your project, but might not contain everything      │
+│   needed to migrate to the latest version of Storybook.                                                    │
+│                                                                                                            │
+│   Please check the changelog and migration guide for manual migrations and more information:               │
+│   https://storybook.js.org/docs/migration-guide                                                            │
+│   And reach out on Discord if you need help: https://discord.gg/storybook                                  │
+│                                                                                                            │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
