@@ -1,7 +1,16 @@
-import { fileURLToPath } from 'url';
-import path from 'path';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
 import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
+
+// Convert ESM URL to directory path
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// ESM-safe resolution for browser polyfills
+const ttyFallback = path.resolve(__dirname, '../node_modules/tty-browserify');
+const osFallback = path.resolve(__dirname, '../node_modules/os-browserify/browser');
+
 
 /** @type {import("@storybook/react-webpack5").StorybookConfig} */
 const config = {
@@ -64,6 +73,15 @@ const config = {
       ],
       include: path.resolve(__dirname, '../'),
     });
+
+    config.resolve = {
+      ...(config.resolve || {}),
+      fallback: {
+        ...(config.resolve?.fallback || {}),
+        tty: ttyFallback,
+        os: osFallback,
+      },
+    };
 
     return config;
   },
