@@ -1,7 +1,5 @@
 import { useState } from 'react';
-
-import { Linking, StyleSheet, Text, View } from 'react-native';
-
+import { Linking, Text, View } from 'react-native';
 import { Header } from './Header';
 
 export const Page = () => {
@@ -16,29 +14,32 @@ export const Page = () => {
         onCreateAccount={() => setUser({ name: 'Jane Doe' })}
       />
 
-      <View style={styles.section}>
-        <Text role="heading" style={styles.h2}>
+      <View className="px-5 py-12 max-w-[600px] mx-auto text-[#333]">
+        <Text role="heading" className="font-extrabold text-[32px] leading-none mb-1">
           Pages in Storybook
         </Text>
-        <Text style={styles.p}>
+
+        <Text className="my-4">
           We recommend building UIs with a{' '}
           <Text
-            style={[styles.a, { fontWeight: 'bold' }]}
+            className="text-[#1ea7fd] font-bold"
             role="link"
             onPress={() => {
               Linking.openURL('https://componentdriven.org');
             }}
           >
-            <Text>component-driven</Text>
+            component-driven
           </Text>{' '}
           process starting with atomic components and ending with pages.
         </Text>
-        <Text style={styles.p}>
+
+        <Text className="my-4">
           Render pages with mock data. This makes it easy to build and review page states without
           needing to navigate to them in your app. Here are some handy patterns for managing page
           data in Storybook:
         </Text>
-        <View>
+
+        <View className="mb-4">
           <Text>
             Use a higher-level connected component. Storybook helps you compose such data from the
             "args" of child component stories
@@ -48,10 +49,11 @@ export const Page = () => {
             using Storybook.
           </Text>
         </View>
-        <Text style={styles.p}>
+
+        <Text className="my-4">
           Get a guided tutorial on component-driven development at{' '}
           <Text
-            style={styles.a}
+            className="text-[#1ea7fd]"
             role="link"
             onPress={() => {
               Linking.openURL('https://storybook.js.org/tutorials/');
@@ -61,7 +63,7 @@ export const Page = () => {
           </Text>
           . Read more in the{' '}
           <Text
-            style={styles.a}
+            className="text-[#1ea7fd]"
             role="link"
             onPress={() => {
               Linking.openURL('https://storybook.js.org/docs');
@@ -71,9 +73,10 @@ export const Page = () => {
           </Text>
           .
         </Text>
-        <View style={styles.tipWrapper}>
-          <View style={styles.tip}>
-            <Text style={styles.tipText}>Tip </Text>
+
+        <View className="flex-row flex-wrap mt-10 mb-10 text-[13px] leading-[20px]">
+          <View className="bg-[#e7fdd8] rounded-2xl px-3 py-1 mr-2 mb-1 self-start">
+            <Text className="text-[#66bf3c] text-[11px] leading-[12px] font-bold">Tip </Text>
           </View>
           <Text>Adjust the width of the canvas with the </Text>
           <Text>Viewports addon in the toolbar</Text>
@@ -82,73 +85,3 @@ export const Page = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  section: {
-    fontFamily: "'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif",
-    fontSize: 14,
-    lineHeight: 24,
-    paddingVertical: 48,
-    paddingHorizontal: 20,
-    marginHorizontal: 'auto',
-    maxWidth: 600,
-    color: '#333',
-  },
-
-  h2: {
-    fontWeight: '900',
-    fontSize: 32,
-    lineHeight: 1,
-    marginBottom: 4,
-  },
-
-  p: {
-    marginVertical: 16,
-    marginHorizontal: 0,
-  },
-
-  a: {
-    color: '#1ea7fd',
-  },
-
-  ul: {
-    paddingLeft: 30,
-    marginVertical: 16,
-  },
-
-  li: {
-    marginBottom: 8,
-  },
-
-  tip: {
-    alignSelf: 'flex-start',
-    borderRadius: 16,
-    backgroundColor: '#e7fdd8',
-    paddingVertical: 4,
-    paddingHorizontal: 12,
-    marginRight: 10,
-    marginBottom: 4,
-  },
-  tipText: {
-    fontSize: 11,
-    lineHeight: 12,
-    fontWeight: '700',
-    color: '#66bf3c',
-  },
-
-  tipWrapper: {
-    fontSize: 13,
-    lineHeight: 20,
-    marginTop: 40,
-    marginBottom: 40,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-
-  tipWrapperSvg: {
-    height: 12,
-    width: 12,
-    marginRight: 4,
-    marginTop: 3,
-  },
-});

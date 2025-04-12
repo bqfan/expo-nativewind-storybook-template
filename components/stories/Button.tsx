@@ -1,5 +1,5 @@
-import type { StyleProp, ViewStyle } from 'react-native';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View, Text } from 'react-native';
+import clsx from 'clsx';
 
 export interface ButtonProps {
   /** Is this the principal call to action on the page? */
@@ -12,90 +12,50 @@ export interface ButtonProps {
   label: string;
   /** Optional click handler */
   onPress?: () => void;
-  style?: StyleProp<ViewStyle>;
+  className?: string;
 }
 
-/** Primary UI component for user interaction */
 export const Button = ({
   primary = false,
   size = 'medium',
   backgroundColor,
   label,
-  style,
   onPress,
+  className,
 }: ButtonProps) => {
-  const modeStyle = primary ? styles.primary : styles.secondary;
-  const textModeStyle = primary ? styles.primaryText : styles.secondaryText;
+  const modeStyles = primary
+    ? 'bg-[#1ea7fd]'
+    : 'bg-transparent border border-black/15';
 
-  const sizeStyle = styles[size];
-  const textSizeStyle = textSizeStyles[size];
+  const textModeStyles = primary ? 'text-white' : 'text-[#333]';
+
+  const sizeStyles = {
+    small: 'py-[10px] px-4',
+    medium: 'py-[11px] px-5',
+    large: 'py-[12px] px-6',
+  }[size];
+
+  const textSizeStyles = {
+    small: 'text-[12px]',
+    medium: 'text-[14px]',
+    large: 'text-[16px]',
+  }[size];
 
   return (
     <TouchableOpacity accessibilityRole="button" activeOpacity={0.6} onPress={onPress}>
       <View
-        style={[
-          styles.button,
-          modeStyle,
-          sizeStyle,
-          style,
-          !!backgroundColor && { backgroundColor },
-          { borderColor: 'black' },
-        ]}
+        className={clsx(
+          'rounded-full border border-black',
+          sizeStyles,
+          modeStyles,
+          className
+        )}
+        style={backgroundColor ? { backgroundColor } : undefined}
       >
-        <Text style={[textModeStyle, textSizeStyle]}>{label}</Text>
+        <Text className={clsx('font-bold', textModeStyles, textSizeStyles)}>
+          {label}
+        </Text>
       </View>
     </TouchableOpacity>
   );
-};
-
-const styles = StyleSheet.create({
-  button: {
-    borderWidth: 0,
-    borderRadius: 48,
-  },
-  buttonText: {
-    fontWeight: '700',
-    lineHeight: 1,
-  },
-  primary: {
-    backgroundColor: '#1ea7fd',
-  },
-  primaryText: {
-    color: 'white',
-  },
-  secondary: {
-    backgroundColor: 'transparent',
-    borderColor: 'rgba(0, 0, 0, 0.15)',
-    borderWidth: 1,
-  },
-  secondaryText: {
-    color: '#333',
-  },
-  small: {
-    paddingVertical: 10,
-    paddingHorizontal: 16,
-  },
-  smallText: {
-    fontSize: 12,
-  },
-  medium: {
-    paddingVertical: 11,
-    paddingHorizontal: 20,
-  },
-  mediumText: {
-    fontSize: 14,
-  },
-  large: {
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-  },
-  largeText: {
-    fontSize: 16,
-  },
-});
-
-const textSizeStyles = {
-  small: styles.smallText,
-  medium: styles.mediumText,
-  large: styles.largeText,
 };

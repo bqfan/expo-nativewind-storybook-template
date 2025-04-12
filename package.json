@@ -60,6 +60,7 @@
     "babel-loader": "^8.2.3",
     "babel-plugin-react-docgen-typescript": "^1.5.1",
     "babel-plugin-react-native-web": "^0.19.10",
+    "clsx": "^2.1.1",
     "cross-env": "^7.0.3",
     "os-browserify": "^0.3.0",
     "storybook": "^8.3.6",
