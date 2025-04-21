@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View } from "react-native";
-import Constants from "expo-constants";
 
 // Import your global CSS file
 import "./global.css";
@@ -14,8 +13,8 @@ function App() {
 
 let AppEntryPoint = App;
 
-if (Constants.expoConfig?.extra?.storybookEnabled === "true") {
-  AppEntryPoint = require("./.ondevice").default;
+if (process.env.EXPO_PUBLIC_STORYBOOK_ENABLED === "true") {
+  AppEntryPoint = require("./.rnstorybook").default;
 }
 
 const styles = StyleSheet.create({
