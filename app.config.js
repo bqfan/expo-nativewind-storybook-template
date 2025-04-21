@@ -4,6 +4,9 @@ export default ({ config }) => ({
   slug: "expo-template-blank-typescript",
   version: "1.0.0",
   newArchEnabled: true,
+  expo: {
+    "userInterfaceStyle": "automatic"
+  },
   orientation: "portrait",
   icon: "./assets/icon.png",
   splash: {
