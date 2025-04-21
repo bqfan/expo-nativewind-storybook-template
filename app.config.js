@@ -3,6 +3,7 @@ export default ({ config }) => ({
   name: "exponativewindtemplatestorybook",
   slug: "expo-template-blank-typescript",
   version: "1.0.0",
+  newArchEnabled: true,
   orientation: "portrait",
   icon: "./assets/icon.png",
   splash: {
