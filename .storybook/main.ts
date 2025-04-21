@@ -2,10 +2,7 @@ import path from 'path';
 
 /** @type{import("@storybook/react-webpack5").StorybookConfig} */
 module.exports = {
-  stories: [
-    "../components/**/*.stories.mdx",
-    "../components/**/*.stories.@(js|jsx|ts|tsx)",
-  ],
+  stories: ['../components/**/*.mdx', '../components/**/*.stories.@(js|jsx|ts|tsx)'],
 
   addons: ["@storybook/addon-links", "@storybook/addon-essentials", {
     name: '@storybook/addon-react-native-web',
@@ -35,7 +32,9 @@ module.exports = {
     options: {},
   },
 
-  docs: {},
+  docs: {
+    autodocs: true
+  },
 
   webpackFinal: async (config, { configType }) => {
     config.module.rules.push({
