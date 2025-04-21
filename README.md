@@ -9,15 +9,17 @@ This is based on [dannyhw/expo-template-storybook](https://github.com/dannyhw/ex
 # Getting Started
 
 ```sh
-npx create-expo-app --template expo-nativewind-template-storybook AwesomeStorybookForAllPlatforms
+git clone https://github.com/bqfan/expo-nativewind-storybook-template AwesomeStorybookForAllPlatforms
 ```
 
 # App
-
+```sh
+npm install
+```
 This will start your regular RN App.
 
 ```sh
-yarn start
+npm start
 ```
 
 # Storybook
@@ -33,13 +35,13 @@ This works via env variables and expo constants.
 
 ```sh
 # either
-yarn storybook
+npm run storybook
 
 # ios
-yarn storybook:ios
+npm run storybook:ios
 
 # android
-yarn storybook:android
+npm run storybook:android
 ```
 
 If you add new stories on the native (ondevice version) you either need to have the watcher running or run the stories loader
@@ -47,7 +49,7 @@ If you add new stories on the native (ondevice version) you either need to have 
 To update the stories one time
 
 ```sh
-yarn storybook-generate
+npm run storybook-generate
 ```
 
 # Web
@@ -55,11 +57,11 @@ yarn storybook-generate
 Start react native web storybook:
 
 ```
-yarn storybook:web
+npm run storybook:web
 ```
 
 build react native web storybook:
 
 ```sh
-yarn build-storybook
+npm run build-storybook
 ```
